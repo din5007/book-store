@@ -33,7 +33,9 @@ class CartControllerTest extends MockMvcSetup {
   @Test
   void addToUserCart_withBookId_shouldReturn200() throws Exception {
     mvc
-      .perform(MockMvcRequestBuilders.put("/api/cart/1/add"))
+      .perform(
+        MockMvcRequestBuilders.put("/api/cart/1/add").contentType("application/json")
+      )
       .andDo(MockMvcResultHandlers.print())
       .andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
   }

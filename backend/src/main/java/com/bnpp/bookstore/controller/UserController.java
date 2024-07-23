@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:3000")
 public class UserController {
   @Autowired
-  UserServiceAdapter userService;
+  UserService userService;
 
   @Autowired
   AuthenticationManager authenticationManager;
@@ -28,12 +28,8 @@ public class UserController {
   @Autowired
   JwtUtils jwtUtils;
 
-  @Autowired
-  PasswordEncoder encoder;
-
   @PostMapping("/signup")
   private void createUser(@RequestBody UserDto userDto) {
-    userDto.setPassword(encoder.encode(userDto.getPassword()));
     userService.createUser(userDto);
   }
 

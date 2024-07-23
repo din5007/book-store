@@ -29,7 +29,7 @@ class BookControllerTest extends MockMvcSetup {
   @Test
   void findAllBooks_shouldReturn200Success() throws Exception {
     mvc
-      .perform(MockMvcRequestBuilders.get("/api/books"))
+      .perform(MockMvcRequestBuilders.get("/api/books").contentType("application/json"))
       .andDo(MockMvcResultHandlers.print())
       .andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
   }

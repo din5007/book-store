@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
@@ -17,7 +18,11 @@ public class UserServiceAdapter implements UserService {
   @Autowired
   UserDao userDao;
 
+  @Autowired
+  PasswordEncoder encoder;
+
   public boolean createUser(UserDto userDto) {
+    userDto.setPassword(encoder.encode(userDto.getPassword()));
     if (userDao.isUserExist(userDto)) {
       throw new AlreadyExistException("User Already Exist");
     }
