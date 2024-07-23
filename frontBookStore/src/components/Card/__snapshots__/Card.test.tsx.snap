@@ -1,0 +1,46 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Card > Card should load properly - snapshot 1`] = `
+<div>
+  <div
+    class="g-4 m-auto row row-cols-lg-4 row-cols-md-3 row-cols-1"
+  >
+    <div
+      class="col"
+    >
+      <div
+        class="card"
+        style="width: 18rem;"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            HARRY POTTER
+          </div>
+          <p
+            class="card-text"
+          >
+            JK ROWLING
+          </p>
+          <p
+            class="card-text"
+          >
+            Price : 
+            400
+             INR
+          </p>
+          <button
+            class="btn btn-primary"
+            type="button"
+          >
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

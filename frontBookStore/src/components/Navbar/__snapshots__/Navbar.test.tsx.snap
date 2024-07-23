@@ -1,0 +1,54 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Navigation > Navigation should load properly with given params - snapshot 1`] = `
+<div>
+  <nav
+    class="bg-body-tertiary navbar navbar-expand-lg navbar-light"
+  >
+    <div
+      class="container"
+    >
+      <a
+        class="navbar-brand"
+        href="/home"
+      >
+        Book Store
+      </a>
+      <button
+        aria-controls="basic-navbar-nav"
+        aria-label="Toggle navigation"
+        class="navbar-toggler collapsed"
+        type="button"
+      >
+        <span
+          class="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        class="navbar-collapse collapse"
+        id="basic-navbar-nav"
+      >
+        <div
+          class="me-auto navbar-nav"
+        >
+          <a
+            class="nav-link"
+            href="/login"
+          >
+            Login
+          </a>
+          <a
+            class="nav-link"
+            href="/register"
+          >
+            Sign Up
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <p>
+    children
+  </p>
+</div>
+`;
