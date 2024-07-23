@@ -13,6 +13,7 @@ export const orderModel : OrderModel = {
             const rsponse = await httpService.post('/api/order/create', {}, { headers: {
                 'Authorization' : localStorage.getItem('jwt')
             }});
+            //toastr would be better
         } catch (error) {
             console.info('error occured', error);
         }

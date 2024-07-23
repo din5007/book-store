@@ -1,4 +1,4 @@
-import { action, Action, computed, Computed, thunk, Thunk, ThunkOn } from "easy-peasy";
+import { action, Action, computed, Computed, thunk, Thunk } from "easy-peasy";
 import { UserBookDto } from "../../dto/dtos";
 import { AppStoreModel } from "..";
 
@@ -31,7 +31,7 @@ export const cartModel : CartModel = {
             actions.setCartInfo([]);
         }
     }),
-    addToCart: thunk(async (actions, { id }, { injections }) => {
+    addToCart: thunk(async (_actions, { id }, { injections }) => {
         const { httpService } = injections;
         try {
             await httpService.put(`/api/cart/${id}/add`, null, {
@@ -43,7 +43,7 @@ export const cartModel : CartModel = {
             console.info('error occured');
         }
     }),
-    decrementQuantity: thunk(async (actions, { id }, { injections }) => {
+    decrementQuantity: thunk(async (_actions, { id }, { injections }) => {
         const { httpService } = injections;
         try {
             await httpService.put(`/api/cart/${id}/decrement`, null, {
