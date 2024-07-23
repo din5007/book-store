@@ -1,5 +1,5 @@
 import { createStore } from "easy-peasy"
-import { describe, expect, it, vi, vitest } from "vitest"
+import { describe, expect, it, vi } from "vitest"
 import { appStoreModel, AppStoreModel } from ".."
 
 describe('Test Order model', () => {

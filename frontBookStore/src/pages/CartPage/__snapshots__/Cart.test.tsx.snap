@@ -1,0 +1,87 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Cart Page > Cart Page should load properly - snapshot 1`] = `
+<div>
+  <div
+    class="mainback"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="page d-flex justify-content-between"
+        >
+          <h1>
+            You Cart View
+          </h1>
+          <button
+            class="btn btn-primary btn-lg"
+            type="button"
+          >
+             Go to Summary !
+          </button>
+        </div>
+        <div
+          class="g-4 m-auto row row-cols-lg-4 row-cols-md-2 row-cols-1"
+        >
+          <div
+            class="col"
+          >
+            <div
+              class="card"
+              style="width: 18rem;"
+            >
+              <div
+                class="card-body"
+              >
+                <div
+                  class="card-title h5"
+                >
+                  Harry Potter
+                </div>
+                <p
+                  class="card-text"
+                >
+                  JK rowling
+                </p>
+              </div>
+              <div
+                class="d-flex align-items-baseline justify-content-center text-center card-footer"
+              >
+                <button
+                  class="btn btn-primary btn-sm"
+                  type="button"
+                >
+                  -
+                </button>
+                <p
+                  class="card-text"
+                >
+                   
+                  400
+                   
+                </p>
+                <button
+                  class="btn btn-primary btn-sm"
+                  type="button"
+                >
+                  +
+                </button>
+              </div>
+              <button
+                class="btn btn-outline-warning btn-md"
+                type="button"
+              >
+                Remove from the cart
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

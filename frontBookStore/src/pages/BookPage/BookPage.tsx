@@ -1,4 +1,3 @@
-import { Card } from "react-bootstrap";
 import BookCard from "../../components/Card/Card";
 import { FC, useState } from "react";
 import SearchBook from "../../components/SearchBook/Search";
