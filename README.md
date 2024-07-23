@@ -24,6 +24,3 @@ npm start
 cd ../backend
 mvn clean install
 mvn springboot::run
-
-
-# book-store
