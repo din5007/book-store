@@ -55,6 +55,7 @@ export const cartModel : CartModel = {
             console.info('error occured');
         }
     }),
+    // Helps to calculate the totalprice on Summary
     totalPrice: computed([(state) => state.cart], (cart) => cart.reduce((prev, curr) => {
         return prev + curr.book.price * curr.quantity;
     }, 0))

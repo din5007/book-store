@@ -15,7 +15,7 @@ export class HttpService {
     };
     serverDomain = 'http://localhost:8080';
 
-    async post<T>(url: string, body: unknown, axiosConfig?: AxiosRequestConfig): Promise<T> {
+    async post<T>(url: string, body?: unknown, axiosConfig?: AxiosRequestConfig): Promise<T> {
         return await axios.post(`${this.serverDomain}${url}`, JSON.stringify(body), config(this.defaultConfig, axiosConfig)) 
         .then((response) => {
             return response.data as T;
@@ -36,7 +36,7 @@ export class HttpService {
         })
     }
 
-    async put<T>(url: string, body: unknown,  axiosConfig?: AxiosRequestConfig): Promise<T> {
+    async put<T>(url: string, body?: unknown,  axiosConfig?: AxiosRequestConfig): Promise<T> {
         return await axios.put(`${this.serverDomain}${url}`, JSON.stringify(body), config(this.defaultConfig, axiosConfig)) 
         .then((response) => {
             return response.data as T;
