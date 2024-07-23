@@ -18,7 +18,7 @@ public class BookDaoAdapter implements BookDao {
   BookMapper bookMapper;
 
   @Override
-  public List<BookDto> findAllBooks(Pageable page) {
+  public List<BookDto> findBooksWithPagination(Pageable page) {
     var books = bookRepository.findAll(page);
     return bookMapper.toDtoList(books.getContent());
   }

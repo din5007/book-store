@@ -41,10 +41,9 @@ class UserServiceAdapterTest {
 
   @Test
   void createUser() {
-    when(passwordEncoder.encode(any())).thenReturn("randomekeys");
     UserDto user = new UserDto();
-    userServiceAdapter.createUser(user);
     user.setPassword("randomkeys");
+    userServiceAdapter.createUser(user);
     Mockito.verify(userDao).addUser(user);
   }
 

@@ -1,12 +1,9 @@
 package com.bnpp.bookstore.service.adapter;
 
 import com.bnpp.bookstore.DTO.BookDto;
-import com.bnpp.bookstore.core.exceptionHandling.NotFoundException;
 import com.bnpp.bookstore.dao.BookDao;
-import com.bnpp.bookstore.entities.Book;
-import com.bnpp.bookstore.repository.BookRepository;
 import com.bnpp.bookstore.service.BookService;
-import java.util.ArrayList;
+
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -22,6 +19,6 @@ public class BookServiceAdapter implements BookService {
   BookDao bookDao;
 
   public List<BookDto> getAllBooks() {
-    return bookDao.findAllBooks(Pageable.ofSize(5));
+    return bookDao.findBooksWithPagination(Pageable.ofSize(5));
   }
 }

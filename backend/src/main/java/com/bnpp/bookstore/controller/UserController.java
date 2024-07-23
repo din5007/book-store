@@ -28,8 +28,12 @@ public class UserController {
   @Autowired
   JwtUtils jwtUtils;
 
+  @Autowired
+  PasswordEncoder passwordEncoder;
+
   @PostMapping("/signup")
   private void createUser(@RequestBody UserDto userDto) {
+    userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
     userService.createUser(userDto);
   }
 

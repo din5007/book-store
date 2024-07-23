@@ -5,5 +5,5 @@ import java.util.List;
 import org.springframework.data.domain.Pageable;
 
 public interface BookDao {
-  List<BookDto> findAllBooks(Pageable page);
+  List<BookDto> findBooksWithPagination(Pageable page);
 }

@@ -18,11 +18,7 @@ public class UserServiceAdapter implements UserService {
   @Autowired
   UserDao userDao;
 
-  @Autowired
-  PasswordEncoder encoder;
-
   public boolean createUser(UserDto userDto) {
-    userDto.setPassword(encoder.encode(userDto.getPassword()));
     if (userDao.isUserExist(userDto)) {
       throw new AlreadyExistException("User Already Exist");
     }
