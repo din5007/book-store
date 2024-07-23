@@ -1,6 +1,7 @@
 package com.bnpp.bookstore.dao.adapter;
 
 import com.bnpp.bookstore.DTO.UserDto;
+import com.bnpp.bookstore.core.exceptionHandling.NotFoundException;
 import com.bnpp.bookstore.dao.UserDao;
 import com.bnpp.bookstore.mapper.UserMapper;
 import com.bnpp.bookstore.repository.UserRepository;
@@ -37,7 +38,9 @@ public class UserDaoAdapter implements UserDao {
 
   @Override
   public UserDto findUserByEmail(String email) {
-    var user = userRepository.findByEmail(email);
+    var user = Optional
+      .ofNullable(userRepository.findByEmail(email))
+      .orElseThrow(() -> new NotFoundException(email + " not found"));
     return userMapper.toDto(user);
   }
 }
