@@ -16,12 +16,11 @@ import org.springframework.test.context.jdbc.Sql;
 @ComponentScan("com.bnpp.bookstore")
 @ActiveProfiles("test")
 class BookDaoAdapterTest {
-
   @Autowired
   private BookDaoAdapter bookDaoAdapter;
 
   @Test
-  @Sql(scripts = { "classpath:/init-db/books.sql"})
+  @Sql(scripts = { "classpath:/init-db/books.sql" })
   void findBooksWithPagination() {
     var books = bookDaoAdapter.findBooksWithPagination(Pageable.ofSize(5));
     assertEquals(5, books.size());
