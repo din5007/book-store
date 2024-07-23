@@ -4,8 +4,9 @@ import Navbar from "react-bootstrap/Navbar";
 import { useStoreState } from "../../store/hooks";
 import { Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { FC, ReactNode } from "react";
 
-const Navigation = ({ children }) => {
+const Navigation : FC<{ children : ReactNode }> = ({ children }) => {
   const { isUserLoggedIn } = useStoreState((state) => state.user);
   const { cart } = useStoreState((state) => state.cart);
 
