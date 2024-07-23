@@ -22,7 +22,7 @@ Please make sure Maven and Node installed locally.
 
 ## To install deps on front end
 ```shell
-    cd ../frontend
+    cd ../frontBookStore
     npm install
     npm start
 ```
