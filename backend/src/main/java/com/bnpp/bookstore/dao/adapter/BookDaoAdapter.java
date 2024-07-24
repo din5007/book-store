@@ -27,7 +27,7 @@ public class BookDaoAdapter implements BookDao {
   @Override
   public List<BookDto> findByTitle(String title, Pageable pageable) {
     var books = bookRepository.findByTitle(
-      StringUtils.defaultIfBlank(title, null),
+      StringUtils.defaultIfBlank('%' + title + '%', ""),
       pageable
     );
     return bookMapper.toDtoList(books.getContent());
