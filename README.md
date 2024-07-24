@@ -5,6 +5,7 @@
  * Option to add book to the cart
  * Add/Decrement the quanity from the cart
  * Simple Order Summary with the Order value
+ * Simple login and sign up feature
 
 ## Pre-requisite
 Click on the below links to download.
