@@ -1,5 +1,5 @@
-import { action, Action, thunk, Thunk, ThunkOn } from "easy-peasy";
-import { UserBookDto, UserDto } from "../../dto/dtos";
+import { action, Action, thunk, Thunk } from "easy-peasy";
+import { UserDto } from "../../dto/dtos";
 import { AppStoreModel } from "..";
 
 export interface UserModel {

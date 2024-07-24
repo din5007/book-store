@@ -1,5 +1,5 @@
 
-import React, { FC } from "react";
+import { FC } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import "./MainPage.css";

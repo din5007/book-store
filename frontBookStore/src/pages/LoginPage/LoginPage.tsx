@@ -1,5 +1,5 @@
 
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
@@ -8,7 +8,7 @@ import MainPage from "../MainPage/MainPage";
 import { Link } from "react-router-dom";
 import ErrorMessage from "../CommonPages/ErrorPage";
 import Loading from "../CommonPages/LoadingPage";
-import { useStoreActions, useStoreState } from "../../store/hooks";
+import { useStoreActions } from "../../store/hooks";
 import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
 

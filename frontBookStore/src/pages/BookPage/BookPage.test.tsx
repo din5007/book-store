@@ -1,5 +1,5 @@
 import { createStore } from 'easy-peasy';
-import { customRender as render, waitFor } from '../../utils/test-helper';
+import { customRender as render } from '../../utils/test-helper';
 import BookPage from "./BookPage"
 import { appStoreModel } from '../../store';
 import { describe, expect, it, vi } from 'vitest';

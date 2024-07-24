@@ -1,6 +1,5 @@
 
 import { useState } from "react";
-import React from "react";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";

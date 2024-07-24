@@ -1,5 +1,4 @@
-import { action, Action, thunk, Thunk, ThunkOn } from "easy-peasy";
-import { UserBookDto } from "../../dto/dtos";
+import { thunk, Thunk } from "easy-peasy";
 import { AppStoreModel } from "..";
 
 export interface OrderModel {
@@ -7,10 +6,10 @@ export interface OrderModel {
 }
 
 export const orderModel : OrderModel = {
-    createOrder: thunk(async (actions, _, { injections }) => {
+    createOrder: thunk(async (_actions, _, { injections }) => {
         const { httpService } = injections;
         try {
-            const rsponse = await httpService.post('/api/order/create', {}, { headers: {
+            await httpService.post('/api/order/create', {}, { headers: {
                 'Authorization' : localStorage.getItem('jwt')
             }});
             //toastr would be better
