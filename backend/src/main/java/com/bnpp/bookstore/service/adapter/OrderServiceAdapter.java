@@ -54,10 +54,11 @@ public class OrderServiceAdapter implements OrderService {
 
   @Override
   @Transactional
-  public void createOrder() {
+  public boolean createOrder() {
     var userDto = userServiceAdapter.getCurrentUser();
     var cart = cartDao.getUserCart(userDto);
     orderDao.createOrder(userDto, cart);
     cartDao.removeFromUserCart(userDto);
+    return true;
   }
 }

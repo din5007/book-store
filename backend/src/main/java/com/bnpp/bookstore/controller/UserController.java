@@ -32,9 +32,13 @@ public class UserController {
   PasswordEncoder passwordEncoder;
 
   @PostMapping("/signup")
-  private void createUser(@RequestBody UserDto userDto) {
+  private ResponseEntity<Boolean> createUser(@RequestBody UserDto userDto) {
     userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
-    userService.createUser(userDto);
+    try {
+      return ResponseEntity.ok(userService.createUser(userDto));
+    } catch (Exception e) {
+      return ResponseEntity.badRequest().body(false);
+    }
   }
 
   @PostMapping("/login")
