@@ -13,15 +13,15 @@ export const booksModel : BookModel = {
     setBooks: action((state, books) => {
         state.books = books;
     }),
-    fetchAllBooks: thunk(async (actions, _, { injections }) => {
+    fetchAllBooks: thunk(async (actions, { title = '' }, { injections }) => {
         const { httpService } = injections;
         try {
-            const rsponse = await httpService.get('/api/books', { headers: {
+            const rsponse = await httpService.get('/api/books', { title } , { headers: {
                 'Authorization' : localStorage.getItem('jwt')
             }});
             actions.setBooks(rsponse);
         } catch (error) {
-            console.info('error occured');
+            console.info('error occured', error);
             actions.setBooks([]);
         }
     }),

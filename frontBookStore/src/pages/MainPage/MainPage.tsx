@@ -1,18 +1,25 @@
-
 import { FC } from "react";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
-import "./MainPage.css";
 
-const MainScreen : FC<{ title : string, children : any}> = ({ title, children }) => {
+const MainScreen: FC<{ title: string; children: any }> = ({
+  title,
+  children,
+}) => {
   return (
-    <div className="mainback">
+    <div
+      style={{
+        minHeight: "93vh",
+        display: "flex",
+        padding: "10px 0",
+      }}
+    >
       <Container>
         <Row>
-          <div className="page">
+          <div className="w-100">
             {title && (
               <>
-                <h1 className="heading">{title}</h1>
+                <h1>{title}</h1>
               </>
             )}
             {children}

@@ -5,7 +5,6 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Form from "react-bootstrap/Form";
 import { Link } from "react-router-dom";
-import "./SignUpPage.css";
 import ErrorMessage from "../CommonPages/ErrorPage";
 import Loading from "../CommonPages/LoadingPage";
 import MainPage from "../MainPage/MainPage";
@@ -41,7 +40,9 @@ const SignUpPage = () => {
 
   return (
     <MainPage title="Register">
-      <div className="loginContainer">
+      <div style={{ display: "flex",
+    flexDirection: "column",
+    margin: "20px"}}>
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {message && <ErrorMessage variant="danger">{message}</ErrorMessage>}
         {loading && <Loading />}

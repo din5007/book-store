@@ -19,7 +19,7 @@ export const cartModel : CartModel = {
     fetchUserCart: thunk(async (actions, _, { injections }) => {
         const { httpService } = injections;
         try {
-            const rsponse = await httpService.get('/api/cart', {
+            const rsponse = await httpService.get('/api/cart', {}, {
                 headers: {
                     'Authorization': localStorage.getItem('jwt')
                 }
@@ -27,7 +27,7 @@ export const cartModel : CartModel = {
             console.info(rsponse);
             actions.setCartInfo(rsponse.cartDtoList);
         } catch (error) {
-            console.info('error occured');
+            console.info('error occured, error');
             actions.setCartInfo([]);
         }
     }),
@@ -40,7 +40,7 @@ export const cartModel : CartModel = {
                 }
             });
         } catch (error) {
-            console.info('error occured');
+            console.info('error occured, error');
         }
     }),
     decrementQuantity: thunk(async (_actions, { id }, { injections }) => {
@@ -52,7 +52,7 @@ export const cartModel : CartModel = {
                 }
             });
         } catch (error) {
-            console.info('error occured');
+            console.info('error occured, error');
         }
     }),
     // Helps to calculate the totalprice on Summary

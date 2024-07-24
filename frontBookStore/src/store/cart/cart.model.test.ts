@@ -15,7 +15,7 @@ describe('Test cart model', () => {
         });
 
         await store.getActions().cart.fetchUserCart({});
-        expect(mock.httpService.get).toBeCalledWith("/api/cart", {
+        expect(mock.httpService.get).toBeCalledWith("/api/cart", {},  {
             "headers": {
                 "Authorization" : null
             }

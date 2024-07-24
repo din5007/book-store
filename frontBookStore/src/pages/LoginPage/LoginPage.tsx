@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 import ErrorMessage from "../CommonPages/ErrorPage";
 import Loading from "../CommonPages/LoadingPage";
 import { useStoreActions } from "../../store/hooks";
-import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage : FC<{}> = () => {
@@ -36,7 +35,11 @@ const LoginPage : FC<{}> = () => {
 
   return (
     <MainPage title="LOGIN">
-      <div className="loginContainer">
+      <div style={{
+        display: "flex",
+        flexDirection: "column",
+        margin: "20px"
+      }}>
         {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
         {loading && <Loading />}
         <Form onSubmit={submitHandler}>
