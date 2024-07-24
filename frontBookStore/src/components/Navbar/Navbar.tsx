@@ -2,7 +2,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useStoreState } from "../../store/hooks";
-import { Badge } from "react-bootstrap";
+import { Badge, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FC, ReactNode } from "react";
 
@@ -36,6 +36,7 @@ const Navigation : FC<{ children : ReactNode }> = ({ children }) => {
               )}
             </Nav>
           </Navbar.Collapse>
+          <Button variant="link" onClick={() => localStorage.clear()}>Log Out</Button>
         </Container>
       </Navbar>
       {children}
