@@ -1,12 +1,18 @@
 import { FC } from "react";
 import { Form } from "react-bootstrap";
+import { useStoreActions } from "../../store/hooks";
 
-const SearchBook: FC<{ onChange: any }> = ({ onChange }) => {
+const SearchBook: FC<{}> = () => {
+  const { fetchAllBooks } = useStoreActions(actions => actions.books);
 
   const onChangeHandler = (e: any) => {
     e.preventDefault();
-    if(e?.target?.value?.length > 2) {
-        onChange(e.target.value);
+    console.info(e.target.value);
+    if(e?.target?.value?.length > 3) {
+        fetchAllBooks({ title : e.target.value});
+    }
+    if(e?.target?.value.length === 0) {
+      fetchAllBooks({ title : ''});
     }
   }
 

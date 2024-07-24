@@ -39,7 +39,7 @@ export const userModel : UserModel = {
             const rsponse = await httpService.post('/api/users/signup', { email, password, userName});
             actions.setUserInfo(rsponse.userInfo);
         } catch (error) {
-            console.info('error occured');
+            console.info('error occured, error');
             actions.setUserInfo(null);
         }
     })

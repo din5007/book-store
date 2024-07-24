@@ -29,8 +29,12 @@ export class HttpService {
         })
     }
 
-    async get<T>(url: string, axiosConfig?: AxiosRequestConfig): Promise<T> {
-        return await axios.get(`${this.serverDomain}${url}`, config(this.defaultConfig, axiosConfig)) 
+    async get<T>(url: string, param?: any, axiosConfig?: AxiosRequestConfig): Promise<T> {
+        let constructUrl = `${this.serverDomain}${url}`;
+        if(!!Object.keys(param).length) {
+            constructUrl += `?title=${param.title}`;
+        }
+        return await axios.get(constructUrl, config(this.defaultConfig, axiosConfig)) 
         .then((response) => {
             return response.data as T;
         })

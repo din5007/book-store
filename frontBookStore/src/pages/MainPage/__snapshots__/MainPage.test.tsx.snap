@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Main Page > Main Page should load properly - snapshot 1`] = `
+<div>
+  <div
+    style="min-height: 93vh; display: flex; padding: 10px 0px;"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="w-100"
+        >
+          <h1>
+            Login
+          </h1>
+          <p>
+             child component goes here 
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
