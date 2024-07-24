@@ -8,7 +8,7 @@ const Cart : FC<{}> = () => {
     const navigate = useNavigate();
     const { cart } = useStoreState((state) => state.cart);
 
-    return (<div className="mainback">
+    return (<div style={{ margin: '5%'}}>
       <Container>
         <Row>
           <div className="page d-flex justify-content-between">
