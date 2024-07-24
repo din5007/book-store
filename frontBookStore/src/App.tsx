@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navigation from "./components/Navbar/Navbar";
 import { Route, Routes } from "react-router";

@@ -1,5 +1,3 @@
-import { unstable_DataStrategyFunction } from "react-router";
-
 export interface BookDto {
     id : number;
     title : string;

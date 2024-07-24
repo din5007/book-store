@@ -1,7 +1,7 @@
 import { Button, Container, Row } from "react-bootstrap"
 import CartViewList from "../../components/Cart"
 import { FC } from "react"
-import { useStoreActions, useStoreState } from "../../store/hooks"
+import { useStoreState } from "../../store/hooks"
 import { useNavigate } from "react-router"
 
 const Cart : FC<{}> = () => {

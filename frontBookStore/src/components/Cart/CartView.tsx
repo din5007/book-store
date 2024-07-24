@@ -1,4 +1,4 @@
-import { Row, Col, CardFooter } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useStoreActions, useStoreState } from '../../store/hooks';
@@ -10,7 +10,7 @@ function CartViewList() {
   const { cart } = useStoreState((state) => state.cart);
 
   useEffect(() => {
-    fetchUserCart();
+    fetchUserCart({});
   }, []);
 
   return (
@@ -25,7 +25,7 @@ function CartViewList() {
                 <Card.Footer className='d-flex align-items-baseline justify-content-center text-center'>
                   <Counter id={book?.id} quantity={quantity}/>
                 </Card.Footer>
-                <Button type="button" size="md" variant='outline-warning' onClick={() => {}}>Remove from the cart</Button> 
+                <Button type="button" size="sm" variant='outline-warning' onClick={() => {}}>Remove from the cart</Button> 
                 </Card>
             </Col>
         )}
