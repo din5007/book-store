@@ -5,6 +5,7 @@ import com.bnpp.bookstore.dao.BookDao;
 import com.bnpp.bookstore.mapper.BookMapper;
 import com.bnpp.bookstore.repository.BookRepository;
 import java.util.List;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,10 @@ public class BookDaoAdapter implements BookDao {
 
   @Override
   public List<BookDto> findByTitle(String title, Pageable pageable) {
-    var books = bookRepository.findByTitle(title, pageable);
+    var books = bookRepository.findByTitle(
+      StringUtils.defaultIfBlank(title, null),
+      pageable
+    );
     return bookMapper.toDtoList(books.getContent());
   }
 }

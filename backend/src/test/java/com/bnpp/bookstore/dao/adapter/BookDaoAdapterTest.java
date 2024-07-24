@@ -39,4 +39,11 @@ class BookDaoAdapterTest {
     var books = bookDaoAdapter.findByTitle("mughal", Pageable.ofSize(5));
     assertEquals(0, books.size());
   }
+
+  @Test
+  @Sql(scripts = { "classpath:/init-db/books.sql" })
+  void findBooksByEmptyTitleWithPagination() {
+    var books = bookDaoAdapter.findByTitle("", Pageable.ofSize(5));
+    assertEquals(5, books.size());
+  }
 }
