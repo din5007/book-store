@@ -29,20 +29,14 @@ class BookDaoAdapterTest {
   @Test
   @Sql(scripts = { "classpath:/init-db/books.sql" })
   void findBooksByTitleWithPagination() {
-    var books = bookDaoAdapter.findByTitle(
-      "harry potter",
-      Pageable.ofSize(5)
-    );
+    var books = bookDaoAdapter.findByTitle("harry potter", Pageable.ofSize(5));
     assertEquals(5, books.size());
   }
 
   @Test
   @Sql(scripts = { "classpath:/init-db/books.sql" })
   void findBooksByUnknownTitleWithPagination() {
-    var books = bookDaoAdapter.findByTitle(
-            "mughal",
-            Pageable.ofSize(5)
-    );
+    var books = bookDaoAdapter.findByTitle("mughal", Pageable.ofSize(5));
     assertEquals(0, books.size());
   }
 }

@@ -5,6 +5,7 @@ import com.bnpp.bookstore.service.OrderService;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -21,7 +22,11 @@ public class OrderController {
   }
 
   @PostMapping("/order/create")
-  private void createOrder() {
-    orderService.createOrder();
+  private ResponseEntity<Boolean> createOrder() {
+    try {
+      return ResponseEntity.ok(orderService.createOrder());
+    } catch (Exception e) {
+      return ResponseEntity.internalServerError().body(false);
+    }
   }
 }

@@ -1,9 +1,16 @@
 package com.bnpp.bookstore.controller;
 
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+
 import com.bnpp.bookstore.MockMvcSetup;
+import com.bnpp.bookstore.core.exceptionHandling.NotFoundException;
 import com.bnpp.bookstore.service.OrderService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -29,10 +36,17 @@ class OrderControllerTest extends MockMvcSetup {
   @Test
   void createOrder_shouldReturn200() throws Exception {
     mvc
-      .perform(
-        MockMvcRequestBuilders.post("/api/order/create").contentType("application/json")
-      )
-      .andDo(MockMvcResultHandlers.print())
-      .andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
+      .perform(post("/api/order/create").contentType("application/json"))
+      .andDo(print())
+      .andExpect(status().is2xxSuccessful());
+  }
+
+  @Test
+  void createOrder_shouldReturn500() throws Exception {
+    when(orderService.createOrder()).thenThrow(new NotFoundException(""));
+    mvc
+      .perform(post("/api/order/create").contentType("application/json"))
+      .andDo(print())
+      .andExpect(status().is5xxServerError());
   }
 }
