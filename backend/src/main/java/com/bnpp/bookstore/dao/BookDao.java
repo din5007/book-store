@@ -6,4 +6,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface BookDao {
   List<BookDto> findBooksWithPagination(Pageable page);
+  List<BookDto> findByTitle(String title, Pageable withPagination);
 }

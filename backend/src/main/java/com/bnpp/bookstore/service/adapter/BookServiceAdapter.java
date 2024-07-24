@@ -20,4 +20,9 @@ public class BookServiceAdapter implements BookService {
   public List<BookDto> getAllBooks() {
     return bookDao.findBooksWithPagination(Pageable.ofSize(5));
   }
+
+  @Override
+  public List<BookDto> getAllBooks(String title) {
+    return bookDao.findByTitle(title, Pageable.ofSize(5));
+  }
 }

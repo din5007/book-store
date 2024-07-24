@@ -22,4 +22,13 @@ public class BookDaoAdapter implements BookDao {
     var books = bookRepository.findAll(page);
     return bookMapper.toDtoList(books.getContent());
   }
+
+  @Override
+  public List<BookDto> findByTitle(
+    String title,
+    Pageable pageable
+  ) {
+    var books = bookRepository.findByTitle(title, pageable);
+    return bookMapper.toDtoList(books.getContent());
+  }
 }

@@ -17,7 +17,7 @@ public class BookController {
   BookService bookService;
 
   @GetMapping("/books")
-  private List<BookDto> getAllBooks() {
-    return bookService.getAllBooks();
+  private List<BookDto> getAllBooks(@RequestParam(required = false) String title) {
+    return bookService.getAllBooks(title);
   }
 }
