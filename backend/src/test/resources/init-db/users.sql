@@ -1,0 +1,1 @@
+INSERT INTO `users` (`user_name`,`upadated_date`,`created_date`,`email`,`name`,`password`) VALUES ('dine','2024-07-22 04:38:10.984808','2024-07-22 04:38:10.984808','dine@gmail.com',NULL,'$2a$10$jPLAfwzX8y0ItExay1dM9..WfDAo4o5aDIaBFL56XhhHGrWwOOuR.');

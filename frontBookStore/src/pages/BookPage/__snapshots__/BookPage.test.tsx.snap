@@ -1,0 +1,61 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Book Page > Book Page should load properly - snapshot 1`] = `
+<div>
+  <div
+    class="d-flex align-items-center flex-column"
+    style="margin: 5%;"
+  >
+    <div
+      class="mb-3"
+    >
+      <input
+        class="form-control"
+        id="exampleForm.ControlInput1"
+        placeholder="Search by Book Name"
+        type="search"
+      />
+    </div>
+    <div
+      class="g-4 m-auto row row-cols-lg-4 row-cols-md-3 row-cols-1"
+    >
+      <div
+        class="col"
+      >
+        <div
+          class="card"
+          style="width: 18rem;"
+        >
+          <div
+            class="card-body"
+          >
+            <div
+              class="card-title h5"
+            >
+              HARRY POTTER
+            </div>
+            <p
+              class="card-text"
+            >
+              JK ROWLING
+            </p>
+            <p
+              class="card-text"
+            >
+              Price : 
+              400
+               INR
+            </p>
+            <button
+              class="btn btn-primary"
+              type="button"
+            >
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
