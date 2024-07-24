@@ -1,0 +1,37 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Order Summary Page > Order Summary Page should load properly - snapshot 1`] = `
+<div>
+  <div
+    style="margin: 5%;"
+  >
+    <div
+      class="page d-flex justify-content-between"
+    >
+      <h1>
+         Your Order Summary 
+      </h1>
+      <button
+        class="btn btn-primary btn-lg"
+        disabled=""
+        type="button"
+      >
+        Order Now !
+      </button>
+    </div>
+    <div
+      style="margin: 50px;"
+    >
+      <div
+        class="list-group"
+      />
+      <h3
+        style="css-float: right;"
+      >
+         Final Order Value : 
+        0
+      </h3>
+    </div>
+  </div>
+</div>
+`;

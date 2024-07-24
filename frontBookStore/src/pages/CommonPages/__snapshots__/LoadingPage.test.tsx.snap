@@ -1,0 +1,14 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Loading Page > Loading Page should load properly - snapshot 1`] = `
+<div>
+  <div
+    style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100%;"
+  >
+    <div
+      class="spinner-border"
+      style="width: 100px; height: 100px;"
+    />
+  </div>
+</div>
+`;

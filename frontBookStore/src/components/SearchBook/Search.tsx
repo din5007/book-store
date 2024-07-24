@@ -5,7 +5,7 @@ const SearchBook: FC<{ onChange: any }> = ({ onChange }) => {
 
   const onChangeHandler = (e: any) => {
     e.preventDefault();
-    if(e?.target?.value > 3) {
+    if(e?.target?.value?.length > 2) {
         onChange(e.target.value);
     }
   }

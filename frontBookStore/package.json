@@ -1,7 +1,7 @@
 {
   "name": "frontbookstore",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,6 +14,7 @@
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",
     "easy-peasy": "^6.0.5",
+    "kill-port": "^2.0.1",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.3.1",

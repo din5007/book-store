@@ -33,4 +33,11 @@ describe('Cart Page', () => {
             expect(getByText('You Cart View')).toBeDefined();
         })
     });
+
+    it('Cart Page should contain Button component', async () => {
+        const {getByRole}  = render(<Cart/>, store);
+        waitFor(() => {
+            expect(getByRole('button', { name : 'Go to Summary'})).toBeDefined();
+        })
+    });
 })

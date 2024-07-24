@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Error Page > Error Page should load properly - snapshot 1`] = `
+<div>
+  <div
+    class="fade alert alert-danger show"
+    role="alert"
+    style="font-size: 20px;"
+  >
+    <strong>
+      error found
+    </strong>
+  </div>
+</div>
+`;

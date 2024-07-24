@@ -22,7 +22,9 @@ const store = createStore(appStoreModel, {
 describe('Card', () => {
     it('Card should load properly - snapshot', () => {
         const {container}  = render(<Card/>, store);
-        expect(container).toMatchSnapshot();
+        waitFor(() => {
+            expect(container).toMatchSnapshot();
+        })
     });
 
     it('Card should contain proper fields', async () => {
@@ -37,6 +39,8 @@ describe('Card', () => {
 
     it('fetchAllBooks request should be triggered when component renders', async () => {
         render(<Card/>, store);
-        expect(mock.get).toBeCalled();
+        waitFor(() => {
+            expect(mock.get).toBeCalled();
+        })
     });
 })

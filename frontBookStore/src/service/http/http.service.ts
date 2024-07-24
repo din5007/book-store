@@ -9,7 +9,7 @@ const config = (defaultConfig : any, customConfig : any) => {
 export class HttpService {
     defaultConfig = {
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
         timeout: 20000
     };

@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Search Component > Search Component should load properly - snapshot 1`] = `
+<div>
+  <div
+    class="mb-3"
+  >
+    <input
+      class="form-control"
+      id="exampleForm.ControlInput1"
+      placeholder="Search by Book Name"
+      type="search"
+    />
+  </div>
+</div>
+`;
