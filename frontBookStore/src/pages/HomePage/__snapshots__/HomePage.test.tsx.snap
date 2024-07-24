@@ -1,0 +1,55 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Home Page > Home Page should load properly - snapshot 1`] = `
+<div>
+  <div
+    style="min-height: 93vh; display: flex; align-items: center;"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="row"
+      >
+        <div
+          style="width: 100%; text-align: center; padding-bottom: 80px;"
+        >
+          <div>
+            <h1
+              class="text-primary"
+              style="font-size: 95px;"
+            >
+              Welcome to Awesome Book Store
+            </h1>
+          </div>
+          <div
+            style="margin-top: 60px; display: flex; justify-content: space-evenly;"
+          >
+            <a
+              href="/login"
+            >
+              <button
+                class="landingbutton btn btn-primary btn-lg"
+                style="width: 200px; height: 55px;"
+                type="button"
+              >
+                Login
+              </button>
+            </a>
+            <a
+              href="/register"
+            >
+              <button
+                class="landingbutton btn btn-outline-primary btn-lg"
+                type="button"
+              >
+                SignUp
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

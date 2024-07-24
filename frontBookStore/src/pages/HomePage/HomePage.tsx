@@ -1,24 +1,36 @@
 import Container from "react-bootstrap/esm/Container";
 import Button from "react-bootstrap/esm/Button";
 import Row from "react-bootstrap/esm/Row";
-import "./HomePage.css";
 import { useStoreState } from "../../store/hooks";
 
 const HomePage = () => {
   const { isUserLoggedIn } = useStoreState(state => state.user);
 
   return (
-    <div className="main">
+    <div style={{
+      minHeight: "93vh",
+    display: "flex",
+    alignItems: "center"
+    }}>
       <Container>
         <Row>
-          <div className="intro-text">
+          <div style={{
+            width: "100%",
+            textAlign: "center",
+            paddingBottom: "80px"
+          }}>
             <div>
-              <h1 className=" title text-primary">Welcome to Awesome Book Store</h1>
+              <h1 className="text-primary" style={{fontSize: "95px"}}>Welcome to Awesome Book Store</h1>
             </div>
             { !isUserLoggedIn && !localStorage.getItem('jwt') ? 
-            <div className="buttonContainer">
+            <div style={{
+              marginTop: "60px",
+    display: "flex",
+    justifyContent: "space-evenly"
+            }}>
               <a href="/login">
-                <Button size="lg" className="landingbutton">
+                <Button size="lg" className="landingbutton" style={{width: "200px",
+    height: "55px"}}>
                   Login
                 </Button>
               </a>
