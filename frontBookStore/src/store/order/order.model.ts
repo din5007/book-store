@@ -13,9 +13,9 @@ export const orderModel : OrderModel = {
             const response = await httpService.post('/api/order/create', {}, { headers: {
                 'Authorization' : localStorage.getItem('jwt')
             }});
-            if(response) toast('Order Completed Successfully');
+            if(response) toast.success('Order Completed Successfully');
         } catch (error) {
-            toast('Error Occured. Please reach out to support');;
+            toast.error('Error Occured. Please reach out to support');;
         }
     }),
 };

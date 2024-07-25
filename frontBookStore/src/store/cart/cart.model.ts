@@ -40,9 +40,9 @@ export const cartModel : CartModel = {
                     'Authorization': localStorage.getItem('jwt')
                 }
             });
-            toast('Added to your cart successfully..');
+            _actions.fetchUserCart({});
         } catch (error) {
-            toast('Error Occured. Please reach out to support');
+            toast.error('Error Occured. Please reach out to support');
         }
     }),
     decrementQuantity: thunk(async (_actions, { id }, { injections }) => {
@@ -53,8 +53,9 @@ export const cartModel : CartModel = {
                     'Authorization': localStorage.getItem('jwt')
                 }
             });
+            _actions.fetchUserCart({});
         } catch (error) {
-            toast('Error Occured. Please reach out to support');
+            toast.error('Error Occured. Please reach out to support');
         }
     }),
     // Helps to calculate the totalprice on Summary
@@ -69,9 +70,10 @@ export const cartModel : CartModel = {
                     'Authorization': localStorage.getItem('jwt')
                 }
             });
-            toast('Removed from cart successfully..');
+            _actions.fetchUserCart({});
+            toast.success('Removed from cart successfully..');
         } catch (error) {
-            toast('Error Occured. Please reach out to support');
+            toast.error('Error Occured. Please reach out to support');
         }
     })
 };

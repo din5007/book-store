@@ -22,7 +22,7 @@ export const booksModel : BookModel = {
             }});
             actions.setBooks(rsponse);
         } catch (error) {
-            toast('Error Occured. Please reach out to support');
+            toast.error('Error Occured. Please reach out to support');
             actions.setBooks([]);
         }
     }),

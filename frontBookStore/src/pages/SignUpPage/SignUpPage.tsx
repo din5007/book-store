@@ -30,7 +30,6 @@ const SignUpPage = () => {
       setLoading(true);
       await signUp({ name, email, password});
       setLoading(false);
-      setMessage("Success");
     }
   };
 

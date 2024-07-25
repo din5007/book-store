@@ -29,7 +29,7 @@ export const userModel : UserModel = {
             actions.setUserInfo(rsponse?.userInfo);
             actions.setIsUserLoggedIn(true);
         } catch (error) {;
-            toast('Error Occured. Please reach out to support');;
+            toast.error('Error Occured. Please reach out to support');;
             actions.setUserInfo(null);
             actions.setIsUserLoggedIn(false);
         }
@@ -38,9 +38,9 @@ export const userModel : UserModel = {
         const { httpService } = injections;
         try {
             const response = await httpService.post('/api/users/signup', { email, password, userName}, {});
-            if(response) toast('Successfully Signed In');
+            if(response) toast.success('Successfully Signed In');
         } catch (error) {
-            toast('Error Occured. Please reach out to support');;
+            toast.error('User Already exist. Please try with different username and mail id');;
         }
     })
 };
