@@ -11,6 +11,8 @@ import com.bnpp.bookstore.repository.CartRepository;
 import com.bnpp.bookstore.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Synchronized;
@@ -34,8 +36,6 @@ public class CartDaoAdapter implements CartDao {
   CartRepository cartRepository;
 
   @Override
-  @Transactional
-  @Synchronized
   public void addToUserCart(Long bookId, UserDto userDto) {
     Cart cart = cartRepository.findByBookIdAndUserName(bookId, userDto.getUsername());
     if (cart == null) {
@@ -56,13 +56,11 @@ public class CartDaoAdapter implements CartDao {
 
   @Override
   public CartDtoList getUserCart(UserDto userDto) {
-    var user = userRepository.findByEmail(userDto.getEmail());
-    return new CartDtoList(cartMapper.toDtoList(user.getCartList()));
+    var cart = cartRepository.findByEmail(userDto.getEmail());
+    return new CartDtoList(cartMapper.toDtoList(cart));
   }
 
   @Override
-  @Transactional
-  @Synchronized
   public void decrementQuantity(Long bookId, UserDto currentUser) {
     Cart cart = cartRepository.findByBookIdAndUserName(bookId, currentUser.getUsername());
     if (cart == null) {
@@ -81,8 +79,21 @@ public class CartDaoAdapter implements CartDao {
   }
 
   @Override
-  public void removeFromUserCart(UserDto userDto) {
+  public boolean removeFromUserCart(Long bookId, UserDto userDto) {
+    List<Cart> userCart = cartRepository.findByUserName(userDto.getUsername());
+    cartRepository.deleteAllInBatch(
+      userCart
+        .stream()
+        .filter(cart -> Objects.equals(cart.getBook().getId(), bookId))
+        .collect(Collectors.toList())
+    );
+    return true;
+  }
+
+  @Override
+  public boolean removeFromUserCartByUser(UserDto userDto) {
     List<Cart> userCart = cartRepository.findByUserName(userDto.getUsername());
     cartRepository.deleteAllInBatch(userCart);
+    return true;
   }
 }

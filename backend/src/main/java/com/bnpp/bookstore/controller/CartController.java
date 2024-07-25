@@ -25,8 +25,13 @@ public class CartController {
   }
 
   @PutMapping("/cart/{book_id}/decrement")
-  private void removeFromUserCart(@PathVariable(name = "book_id") Long bookId) {
+  private void decrementQuantity(@PathVariable(name = "book_id") Long bookId) {
     cartService.decrementQuantity(bookId, userService.getCurrentUser());
+  }
+
+  @DeleteMapping("/cart/{book_id}/remove")
+  private void removeFromCart(@PathVariable(name = "book_id") Long bookId) {
+    cartService.removeFromCart(bookId, userService.getCurrentUser());
   }
 
   @GetMapping("/cart")

@@ -30,4 +30,9 @@ public class CartServiceAdapter implements CartService {
   public void decrementQuantity(Long bookId, UserDto currentUser) {
     cartDao.decrementQuantity(bookId, currentUser);
   }
+
+  @Override
+  public boolean removeFromCart(Long bookId, UserDto userDto) {
+    return cartDao.removeFromUserCart(bookId, userDto);
+  }
 }
