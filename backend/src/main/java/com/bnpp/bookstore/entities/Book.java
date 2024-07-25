@@ -1,7 +1,6 @@
 package com.bnpp.bookstore.entities;
 
 import jakarta.persistence.*;
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
