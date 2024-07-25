@@ -13,7 +13,7 @@ function BookCard() {
 
   return (
     <>
-      <Row xs={1} md={3} lg={4} className="g-4 m-auto">
+      <Row xs={1} md={2} lg={2} className="m-auto">
         {books?.map(({ id, title, author, price}) => (
           <Col key={id}>
             <Card style={{ width: "18rem" }}>

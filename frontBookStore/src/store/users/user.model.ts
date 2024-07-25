@@ -36,10 +36,10 @@ export const userModel : UserModel = {
     signUp: thunk(async (actions, { email, password, name : userName }, { injections }) => {
         const { httpService } = injections;
         try {
-            const rsponse = await httpService.post('/api/users/signup', { email, password, userName});
-            actions.setUserInfo(rsponse.userInfo);
+            const response = await httpService.post('/api/users/signup', { email, password, userName}, {});
+            actions.setUserInfo(response?.userInfo);
         } catch (error) {
-            console.info('error occured, error');
+            console.info('error occured', error);
             actions.setUserInfo(null);
         }
     })

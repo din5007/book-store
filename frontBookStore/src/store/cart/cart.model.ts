@@ -26,7 +26,6 @@ export const cartModel : CartModel = {
                     'Authorization': localStorage.getItem('jwt')
                 }
             });
-            console.info(rsponse);
             actions.setCartInfo(rsponse.cartDtoList);
         } catch (error) {
             console.info('error occured, error');

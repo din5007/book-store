@@ -33,7 +33,7 @@ const SignUpPage = () => {
       setMessage("null");
       try {
         setLoading(true);
-        signUp({ name, email, password});
+        await signUp({ name, email, password});
         setLoading(false);
         navigate('/login');
         toast("Success");

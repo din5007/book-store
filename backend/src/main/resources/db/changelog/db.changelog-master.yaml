@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/create_table_books.sql
+      file: db/changelog/create_database.sql
+  - include:
+      file: db/changelog/update_table_books.sql
