@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import Counter from '../Counter/Counter';
 
 function CartViewList() {
-  const { fetchUserCart } = useStoreActions((actions) => actions.cart);
+  const { fetchUserCart, removeFromCart } = useStoreActions((actions) => actions.cart);
   const { cart } = useStoreState((state) => state.cart);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function CartViewList() {
                 <Card.Footer className='d-flex align-items-baseline justify-content-center text-center'>
                   <Counter id={book?.id} quantity={quantity}/>
                 </Card.Footer>
-                <Button type="button" size="sm" variant='outline-warning' onClick={() => {}}>Remove from the cart</Button> 
+                <Button type="button" size="sm" variant='outline-warning' onClick={() => removeFromCart({ id: book?.id})}>Remove from the cart</Button> 
                 </Card>
             </Col>
         )}

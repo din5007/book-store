@@ -11,10 +11,13 @@ import BookPage from "./pages/BookPage/BookPage";
 import OrderSummary from "./pages/OrderPage";
 import Loading from "./pages/CommonPages/LoadingPage";
 import { BrowserRouter } from "react-router-dom";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-bootstrap";
 
 const App = () => {
     return (
       <BrowserRouter>
+      <ToastContainer />
       <GlobalStoreProvider>
         <Navigation >
             <Suspense fallback={<Loading />}>

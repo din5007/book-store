@@ -1,6 +1,7 @@
 import { action, Action, computed, Computed, thunk, Thunk } from "easy-peasy";
 import { UserBookDto } from "../../dto/dtos";
 import { AppStoreModel } from "..";
+import { toast } from "react-toastify";
 
 export interface CartModel {
     cart: UserBookDto[];
@@ -8,6 +9,7 @@ export interface CartModel {
     fetchUserCart: Thunk<CartModel, any, any, AppStoreModel>;
     addToCart: Thunk<CartModel, any, any, AppStoreModel>;
     decrementQuantity: Thunk<CartModel, any, any, AppStoreModel>;
+    removeFromCart: Thunk<CartModel, any, any, AppStoreModel>;
     totalPrice : Computed<CartModel, any, AppStoreModel>;
 }
 
@@ -39,6 +41,7 @@ export const cartModel : CartModel = {
                     'Authorization': localStorage.getItem('jwt')
                 }
             });
+            toast('Added to your cart successfully..');
         } catch (error) {
             console.info('error occured, error');
         }
@@ -58,5 +61,18 @@ export const cartModel : CartModel = {
     // Helps to calculate the totalprice on Summary
     totalPrice: computed([(state) => state.cart], (cart) => cart.reduce((prev, curr) => {
         return prev + curr.book.price * curr.quantity;
-    }, 0))
+    }, 0)),
+    removeFromCart: thunk(async (_actions, { id }, { injections }) => {
+        const { httpService } = injections;
+        try {
+            await httpService.delete(`/api/cart/${id}/remove`, {
+                headers: {
+                    'Authorization': localStorage.getItem('jwt')
+                }
+            });
+            toast('Removed from cart successfully..');
+        } catch (error) {
+            console.info('error occured, error');
+        }
+    })
 };
