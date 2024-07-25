@@ -38,7 +38,7 @@ export const userModel : UserModel = {
         const { httpService } = injections;
         try {
             const response = await httpService.post('/api/users/signup', { email, password, userName}, {});
-            if(response) toast.error('Successfully Signed In');
+            if(response) toast.success('Successfully Signed In');
         } catch (error) {
             toast.error('User Already exist. Please try with different username and mail id');;
         }
