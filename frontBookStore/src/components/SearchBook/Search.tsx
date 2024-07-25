@@ -3,14 +3,16 @@ import { Form } from "react-bootstrap";
 import { useStoreActions } from "../../store/hooks";
 
 const SearchBook: FC<{}> = () => {
-  const { fetchAllBooks } = useStoreActions(actions => actions.books);
+  const { fetchAllBooks, setSearchKey } = useStoreActions(actions => actions.books);
 
   const onChangeHandler = (e: any) => {
     e.preventDefault();
     if(e?.target?.value?.length > 3) {
+        setSearchKey(e?.target?.value);
         fetchAllBooks({ title : e.target.value});
     }
     if(e?.target?.value.length === 0) {
+      setSearchKey(e?.target?.value);
       fetchAllBooks({ title : ''});
     }
   }

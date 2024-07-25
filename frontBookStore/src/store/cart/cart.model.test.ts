@@ -9,6 +9,7 @@ describe('Test cart model', () => {
                 get: vi.fn()
             }
         }
+        localStorage.setItem('jwt', 'randomkey');
         const store = createStore<AppStoreModel, any>(appStoreModel, {
             injections: mock,
             initialState: {}
@@ -17,7 +18,7 @@ describe('Test cart model', () => {
         await store.getActions().cart.fetchUserCart({});
         expect(mock.httpService.get).toBeCalledWith("/api/cart", {},  {
             "headers": {
-                "Authorization" : null
+                "Authorization" : "randomkey"
             }
         });
     });
@@ -28,6 +29,7 @@ describe('Test cart model', () => {
                 put: vi.fn()
             }
         }
+        localStorage.setItem('jwt', 'randomkey');
         const store = createStore<AppStoreModel, any>(appStoreModel, {
             injections: mock,
             initialState: {}
@@ -36,7 +38,7 @@ describe('Test cart model', () => {
         await store.getActions().cart.addToCart({ id : 1});
         expect(mock.httpService.put).toBeCalledWith("/api/cart/1/add", null, {
             "headers": {
-                "Authorization" : null
+                "Authorization" : "randomkey"
             }
         });
     });
@@ -47,6 +49,7 @@ describe('Test cart model', () => {
                 put: vi.fn()
             }
         }
+        localStorage.setItem('jwt', 'randomkey');
         const store = createStore<AppStoreModel, any>(appStoreModel, {
             injections: mock,
             initialState: {}
@@ -55,7 +58,7 @@ describe('Test cart model', () => {
         await store.getActions().cart.decrementQuantity({ id : 1});
         expect(mock.httpService.put).toBeCalledWith("/api/cart/1/decrement", null, {
             "headers": {
-                "Authorization" : null
+                "Authorization" : "randomkey"
             }
         });
     });
@@ -66,6 +69,7 @@ describe('Test cart model', () => {
                 delete: vi.fn()
             }
         }
+        localStorage.setItem('jwt', 'randomkey');
         const store = createStore<AppStoreModel, any>(appStoreModel, {
             injections: mock,
             initialState: {}
@@ -74,7 +78,7 @@ describe('Test cart model', () => {
         await store.getActions().cart.removeFromCart({ id : 1});
         expect(mock.httpService.delete).toBeCalledWith("/api/cart/1/remove",  {
             "headers": {
-                "Authorization" : null
+                "Authorization" : "randomkey"
             }
         });
     });

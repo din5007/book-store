@@ -7,6 +7,8 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +19,11 @@ public class BookServiceAdapter implements BookService {
   @Autowired
   BookDao bookDao;
 
-  public List<BookDto> getAllBooks() {
-    return bookDao.findBooksWithPagination(Pageable.ofSize(5));
-  }
+  private static final int pageSize = 8;
 
   @Override
-  public List<BookDto> getAllBooks(String title) {
-    return bookDao.findByTitle(title, Pageable.ofSize(5));
+  public List<BookDto> getAllBooks(String title, Integer page) {
+    Pageable pageable = PageRequest.of(page, pageSize);
+    return bookDao.findByTitle(title, pageable);
   }
 }

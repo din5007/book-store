@@ -9,15 +9,16 @@ describe('Test book model', () => {
                 get: vi.fn()
             }
         }
+        localStorage.setItem('jwt', 'randomkey');
         const store = createStore<AppStoreModel, any>(appStoreModel, {
             injections: mock,
             initialState: {}
         });
 
         await store.getActions().books.fetchAllBooks({});
-        expect(mock.httpService.get).toBeCalledWith("/api/books", { title : ''}, {
+        expect(mock.httpService.get).toBeCalledWith("/api/books?page=0&&title= ",{}, {
             "headers": {
-                "Authorization" : null
+                "Authorization" : "randomkey"
             }
         });
     });
