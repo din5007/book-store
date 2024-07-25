@@ -9,4 +9,6 @@ public interface CartService {
   CartDtoList getUserCart(UserDto userDto);
 
   void decrementQuantity(Long bookId, UserDto userDto);
+
+  boolean removeFromCart(Long bookId, UserDto userDto);
 }

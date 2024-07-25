@@ -15,6 +15,9 @@ Click on the below links to download.
 ![Static Badge](https://img.shields.io/badge/node-brown?link=https%3A%2F%2Fnodejs.org%2Fdist%2Fv20.15.1%2Fnode-v20.15.1-x64.msi)
 ![Static Badge](https://img.shields.io/badge/MySql-blue?link=https%3A%2F%2Fdev.mysql.com%2Fdownloads%2Ffile%2F%3Fid%3D532677)
 
+## DB Schema design
+
+[!screenshot][./db-schema.png]
 
 To set up in local
 

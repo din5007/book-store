@@ -9,6 +9,7 @@ import com.bnpp.bookstore.entities.OrderBook;
 import com.bnpp.bookstore.mapper.BookMapper;
 import com.bnpp.bookstore.mapper.UserMapper;
 import com.bnpp.bookstore.repository.OrderRepository;
+import com.bnpp.bookstore.repository.UserRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,10 +25,13 @@ public class OrderDaoAdapter implements OrderDao {
   @Autowired
   OrderRepository orderRepository;
 
+  @Autowired
+  private UserRepository userRepository;
+
   @Override
-  public void createOrder(UserDto userDto, CartDtoList cart) {
+  public boolean createOrder(UserDto userDto, CartDtoList cart) {
     Order order = new Order();
-    order.setUser(userMapper.toEntity(userDto));
+    order.setUser(userRepository.findByEmail(userDto.getEmail()));
     Double totalQuantity = cart
       .getCartDtoList()
       .stream()
@@ -53,5 +57,6 @@ public class OrderDaoAdapter implements OrderDao {
       .toList();
     order.setOrderBookList(orderBook);
     orderRepository.saveAndFlush(order);
+    return true;
   }
 }

@@ -41,7 +41,7 @@ describe('Test cart model', () => {
         });
     });
 
-    it('remove/decrement the add quantity from user cart service ', async () => {
+    it('decrement the add quantity from user cart service ', async () => {
         const mock = {
             httpService: {
                 put: vi.fn()
@@ -54,6 +54,25 @@ describe('Test cart model', () => {
 
         await store.getActions().cart.decrementQuantity({ id : 1});
         expect(mock.httpService.put).toBeCalledWith("/api/cart/1/decrement", null, {
+            "headers": {
+                "Authorization" : null
+            }
+        });
+    });
+
+    it('remove the book from user cart service ', async () => {
+        const mock = {
+            httpService: {
+                delete: vi.fn()
+            }
+        }
+        const store = createStore<AppStoreModel, any>(appStoreModel, {
+            injections: mock,
+            initialState: {}
+        });
+
+        await store.getActions().cart.removeFromCart({ id : 1});
+        expect(mock.httpService.delete).toBeCalledWith("/api/cart/1/remove",  {
             "headers": {
                 "Authorization" : null
             }

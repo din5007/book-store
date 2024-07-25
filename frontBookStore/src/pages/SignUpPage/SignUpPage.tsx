@@ -4,11 +4,12 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ErrorMessage from "../CommonPages/ErrorPage";
 import Loading from "../CommonPages/LoadingPage";
 import MainPage from "../MainPage/MainPage";
 import { useStoreActions } from "../../store/hooks";
+import { toast } from "react-toastify";
 
 const SignUpPage = () => {
   const [email, setEmail] = useState("");
@@ -18,6 +19,8 @@ const SignUpPage = () => {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const { signUp } = useStoreActions((actions) => actions.user);
 
@@ -32,6 +35,8 @@ const SignUpPage = () => {
         setLoading(true);
         signUp({ name, email, password});
         setLoading(false);
+        navigate('/login');
+        toast("Success");
       } catch (error : any) {
         setError(error.response.data.message);
       }

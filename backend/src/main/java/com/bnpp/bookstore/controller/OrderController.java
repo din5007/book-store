@@ -16,11 +16,6 @@ public class OrderController {
   @Autowired
   OrderService orderService;
 
-  @GetMapping("/orders")
-  private List<Order> getAllOrders() {
-    return orderService.getAllOrders();
-  }
-
   @PostMapping("/order/create")
   private ResponseEntity<Boolean> createOrder() {
     try {

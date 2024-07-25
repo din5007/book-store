@@ -46,19 +46,14 @@ public class OrderServiceAdapter implements OrderService {
   @Autowired
   private UserServiceAdapter userServiceAdapter;
 
-  public List<Order> getAllOrders() {
-    List<Order> orders = new ArrayList<Order>();
-    orderRepository.findAll().forEach(order -> orders.add(order));
-    return orders;
-  }
-
   @Override
   @Transactional
   public boolean createOrder() {
     var userDto = userServiceAdapter.getCurrentUser();
     var cart = cartDao.getUserCart(userDto);
-    orderDao.createOrder(userDto, cart);
-    cartDao.removeFromUserCart(userDto);
-    return true;
+    if (orderDao.createOrder(userDto, cart)) {
+      return cartDao.removeFromUserCartByUser(userDto);
+    }
+    return false;
   }
 }

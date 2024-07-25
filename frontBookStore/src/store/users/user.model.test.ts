@@ -24,7 +24,9 @@ describe('Test Order model', () => {
     it('Login scenario ', async () => {
         const mock = {
             httpService: {
-                post: vi.fn()
+                post: vi.fn(() => {
+                    token: 'sdfsfsdfsfsfsdf'
+                })
             }
         }
         const store = createStore<AppStoreModel, any>(appStoreModel, {

@@ -11,5 +11,7 @@ public interface CartDao {
 
   void decrementQuantity(Long bookId, UserDto currentUser);
 
-  void removeFromUserCart(UserDto userDto);
+  boolean removeFromUserCart(Long bookId, UserDto userDto);
+
+  boolean removeFromUserCartByUser(UserDto userDto);
 }

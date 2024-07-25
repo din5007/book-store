@@ -24,8 +24,8 @@ export const userModel : UserModel = {
         const { httpService } = injections;
         try {
             const rsponse = await httpService.post('/api/users/login', { email, password }, { });
-            localStorage.setItem('jwt', `Bearer ${rsponse.token}`);
-            actions.setUserInfo(rsponse.userInfo);
+            localStorage.setItem('jwt', `Bearer ${rsponse?.token}`);
+            actions.setUserInfo(rsponse?.userInfo);
             actions.setIsUserLoggedIn(true);
         } catch (error) {;
             console.info('error occured', error);

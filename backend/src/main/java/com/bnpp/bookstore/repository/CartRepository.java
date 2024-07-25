@@ -17,4 +17,12 @@ public interface CartRepository extends JpaRepository<Cart, Integer> {
 
   @Query(nativeQuery = true, value = "select * from cart where user_name =:user")
   List<Cart> findByUserName(@Param("user") String username);
+
+  @Query(
+    nativeQuery = true,
+    value = "select cart.* from cart " +
+    "inner join users on users.user_name = cart.user_name " +
+    "where users.email =:email"
+  )
+  List<Cart> findByEmail(@Param("email") String email);
 }
