@@ -26,10 +26,9 @@ export const cartModel : CartModel = {
                     'Authorization': localStorage.getItem('jwt')
                 }
             });
-            console.info(rsponse);
             actions.setCartInfo(rsponse.cartDtoList);
         } catch (error) {
-            console.info('error occured, error');
+            toast('Error Occured. Please reach out to support');
             actions.setCartInfo([]);
         }
     }),
@@ -43,7 +42,7 @@ export const cartModel : CartModel = {
             });
             toast('Added to your cart successfully..');
         } catch (error) {
-            console.info('error occured, error');
+            toast('Error Occured. Please reach out to support');
         }
     }),
     decrementQuantity: thunk(async (_actions, { id }, { injections }) => {
@@ -55,7 +54,7 @@ export const cartModel : CartModel = {
                 }
             });
         } catch (error) {
-            console.info('error occured, error');
+            toast('Error Occured. Please reach out to support');
         }
     }),
     // Helps to calculate the totalprice on Summary
@@ -72,7 +71,7 @@ export const cartModel : CartModel = {
             });
             toast('Removed from cart successfully..');
         } catch (error) {
-            console.info('error occured, error');
+            toast('Error Occured. Please reach out to support');
         }
     })
 };

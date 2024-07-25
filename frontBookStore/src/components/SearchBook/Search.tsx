@@ -7,7 +7,6 @@ const SearchBook: FC<{}> = () => {
 
   const onChangeHandler = (e: any) => {
     e.preventDefault();
-    console.info(e.target.value);
     if(e?.target?.value?.length > 3) {
         fetchAllBooks({ title : e.target.value});
     }

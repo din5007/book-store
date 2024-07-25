@@ -1,6 +1,7 @@
 import { action, Action, thunk, Thunk } from "easy-peasy";
 import { BookDto } from "../../dto/dtos";
 import { AppStoreModel } from "..";
+import { toast } from "react-toastify";
 
 export interface BookModel {
     books: BookDto[];
@@ -21,7 +22,7 @@ export const booksModel : BookModel = {
             }});
             actions.setBooks(rsponse);
         } catch (error) {
-            console.info('error occured', error);
+            toast('Error Occured. Please reach out to support');
             actions.setBooks([]);
         }
     }),

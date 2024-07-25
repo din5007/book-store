@@ -18,7 +18,7 @@ describe('Test Order model', () => {
             userName: 'dine',
             password: 'password',
             email: 'dine@gmail.com'
-        });
+        }, {});
     });
 
     it('Login scenario ', async () => {

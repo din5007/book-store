@@ -1,5 +1,5 @@
 import { createStore } from 'easy-peasy';
-import { customRender as render } from '../../utils/test-helper';
+import { customRender as render, waitFor } from '../../utils/test-helper';
 import BookPage from "./BookPage"
 import { appStoreModel } from '../../store';
 import { describe, expect, it, vi } from 'vitest';
@@ -20,13 +20,17 @@ const store = createStore(appStoreModel, {
 })
 
 describe('Book Page', () => {
-    it('Book Page should load properly - snapshot', () => {
+    it('Book Page should load properly - snapshot', async () => {
         const {container}  = render(<BookPage/>, store);
-        expect(container).toMatchSnapshot();
+        waitFor(() => {
+            expect(container).toMatchSnapshot();
+        });
     });
 
-    it('Book Page should contain Search component', () => {
+    it('Book Page should contain Search component', async () => {
         const {getByPlaceholderText}  = render(<BookPage/>, store);
-        expect(getByPlaceholderText('Search by Book Name')).toBeDefined();
+        waitFor(() => {
+            expect(getByPlaceholderText('Search by Book Name')).toBeDefined();
+        })
     });
 })
