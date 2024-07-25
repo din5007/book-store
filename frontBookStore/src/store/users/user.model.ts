@@ -40,7 +40,7 @@ export const userModel : UserModel = {
             const response = await httpService.post('/api/users/signup', { email, password, userName}, {});
             if(response) toast.error('Successfully Signed In');
         } catch (error) {
-            toast.error('Error Occured. Please reach out to support');;
+            toast.error('User Already exist. Please try with different username and mail id');;
         }
     })
 };

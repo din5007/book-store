@@ -3,12 +3,13 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { useStoreState } from "../../store/hooks";
 import { Badge, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FC, ReactNode } from "react";
 
 const Navigation : FC<{ children : ReactNode }> = ({ children }) => {
   const { isUserLoggedIn } = useStoreState((state) => state.user);
   const { cart } = useStoreState((state) => state.cart);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -37,7 +38,10 @@ const Navigation : FC<{ children : ReactNode }> = ({ children }) => {
             </Nav>
           </Navbar.Collapse>
           {( isUserLoggedIn || localStorage.getItem("jwt")) && 
-          <Button variant="link" onClick={() => localStorage.clear()}>Log Out</Button> }
+          <Button variant="link" onClick={() => {
+            localStorage.clear();
+            navigate('/home');
+          }}>Log Out</Button> }
         </Container>
       </Navbar>
       {children}

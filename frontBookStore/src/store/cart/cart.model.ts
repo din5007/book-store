@@ -40,7 +40,7 @@ export const cartModel : CartModel = {
                     'Authorization': localStorage.getItem('jwt')
                 }
             });
-            toast.success('Added to your cart successfully..');
+            _actions.fetchUserCart({});
         } catch (error) {
             toast.error('Error Occured. Please reach out to support');
         }
@@ -53,6 +53,7 @@ export const cartModel : CartModel = {
                     'Authorization': localStorage.getItem('jwt')
                 }
             });
+            _actions.fetchUserCart({});
         } catch (error) {
             toast.error('Error Occured. Please reach out to support');
         }
@@ -69,6 +70,7 @@ export const cartModel : CartModel = {
                     'Authorization': localStorage.getItem('jwt')
                 }
             });
+            _actions.fetchUserCart({});
             toast.success('Removed from cart successfully..');
         } catch (error) {
             toast.error('Error Occured. Please reach out to support');
