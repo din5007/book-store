@@ -55,6 +55,7 @@ public class CartDaoAdapter implements CartDao {
   }
 
   @Override
+  @Transactional
   public CartDtoList getUserCart(UserDto userDto) {
     var cart = cartRepository.findByEmail(userDto.getEmail());
     return new CartDtoList(cartMapper.toDtoList(cart));
