@@ -17,7 +17,7 @@ import { ToastContainer } from "react-toastify";
 const App = () => {
     return (
       <BrowserRouter>
-      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick theme="colored"/>
+      <ToastContainer position="top-right" stacked={false} autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick theme="colored"/>
       <GlobalStoreProvider>
         <Navigation >
             <Suspense fallback={<Loading />}>
