@@ -26,6 +26,23 @@ git clone https://github.com/din5007/book-store.git
 ```
 Please make sure Maven and Node installed locally.
 
+## set up Database schema
+
+STEP 1: Open MySQL Workbench
+
+Please use the below details on respective fields and login
+
+```
+host: localhost
+port: 3306
+username: root
+password: root
+```
+
+```db2
+create schema if not exists onlinebookstore;
+```
+
 ## To Set up front end
 ```shell
     cd ../frontBookStore
