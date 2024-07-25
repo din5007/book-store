@@ -14,6 +14,7 @@ import org.mapstruct.ReportingPolicy;
 )
 public interface UserMapper {
   UserDto toDto(User book);
+
   @Mapping(source = "username", target = "userName")
   User toEntity(UserDto userDto);
 }
