@@ -17,7 +17,10 @@ public class BookController {
   BookService bookService;
 
   @GetMapping("/books")
-  private List<BookDto> getAllBooks(@RequestParam(required = false) String title) {
-    return bookService.getAllBooks(title);
+  private List<BookDto> getAllBooks(
+    @RequestParam(required = false) String title,
+    @RequestParam(defaultValue = "0") Integer page
+  ) {
+    return bookService.getAllBooks(title, page);
   }
 }

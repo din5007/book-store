@@ -15,8 +15,8 @@ function BookCard() {
     <>
       <Row className="m-auto">
         {books?.map(({ id, title, author, price}) => (
-          <Col key={id}>
-            <Card className="w-100">
+          <Col key={id} className="m-auto py-3">
+            <Card style={{ width : '18rem'}}>
               <Card.Body>
                 <Card.Title>{title.toUpperCase()}</Card.Title>
                 <Card.Text>{author.toUpperCase()}</Card.Text>

@@ -15,7 +15,7 @@ describe('Test book model', () => {
         });
 
         await store.getActions().books.fetchAllBooks({});
-        expect(mock.httpService.get).toBeCalledWith("/api/books", { title : ''}, {
+        expect(mock.httpService.get).toBeCalledWith("/api/books?page=0&&title= ",{}, {
             "headers": {
                 "Authorization" : null
             }
