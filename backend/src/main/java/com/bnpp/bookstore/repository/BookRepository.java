@@ -12,7 +12,8 @@ import org.springframework.stereotype.Repository;
 public interface BookRepository extends JpaRepository<Book, Long> {
   @Query(
     nativeQuery = true,
-    value = "select * from books where (:#{@queryUtil.checkNull(#title)} = true or title like :title)"
+    value = "select * from books " +
+    "where (:#{@queryUtil.checkNull(#title)} = true or title like :title)"
   )
   Page<Book> findByTitle(@Param("title") String title, Pageable pageable);
 }

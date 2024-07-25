@@ -7,6 +7,7 @@ import com.bnpp.bookstore.dao.OrderDao;
 import com.bnpp.bookstore.entities.Order;
 import com.bnpp.bookstore.entities.OrderBook;
 import com.bnpp.bookstore.mapper.BookMapper;
+import com.bnpp.bookstore.mapper.OrderMapper;
 import com.bnpp.bookstore.mapper.UserMapper;
 import com.bnpp.bookstore.repository.OrderRepository;
 import com.bnpp.bookstore.repository.UserRepository;
@@ -23,6 +24,9 @@ public class OrderDaoAdapter implements OrderDao {
   BookMapper bookMapper;
 
   @Autowired
+  OrderMapper orderMapper;
+
+  @Autowired
   OrderRepository orderRepository;
 
   @Autowired
@@ -32,31 +36,22 @@ public class OrderDaoAdapter implements OrderDao {
   public boolean createOrder(UserDto userDto, CartDtoList cart) {
     Order order = new Order();
     order.setUser(userRepository.findByEmail(userDto.getEmail()));
-    Double totalQuantity = cart
-      .getCartDtoList()
-      .stream()
-      .mapToDouble(CartDto::getQuantity)
-      .sum();
-    order.setTotalQuantity(totalQuantity);
-    Double totalPrice = cart
+    order.setTotalQuantity(calculateTotalQuanity(cart));
+    order.setTotalPrice(calculateTotalPrice(cart));
+    order.setOrderBookList(orderMapper.toOrderBook(cart.getCartDtoList()));
+    orderRepository.saveAndFlush(order);
+    return true;
+  }
+
+  private static double calculateTotalQuanity(CartDtoList cart) {
+    return cart.getCartDtoList().stream().mapToDouble(CartDto::getQuantity).sum();
+  }
+
+  private static double calculateTotalPrice(CartDtoList cart) {
+    return cart
       .getCartDtoList()
       .stream()
       .mapToDouble(cartDto -> cartDto.getBook().getPrice() * cartDto.getQuantity())
       .sum();
-    order.setTotalPrice(totalPrice);
-    List<OrderBook> orderBook = cart
-      .getCartDtoList()
-      .stream()
-      .map(
-        cartDto -> {
-          OrderBook orderBook1 = new OrderBook();
-          orderBook1.setBook(bookMapper.toEntity(cartDto.getBook()));
-          return orderBook1;
-        }
-      )
-      .toList();
-    order.setOrderBookList(orderBook);
-    orderRepository.saveAndFlush(order);
-    return true;
   }
 }

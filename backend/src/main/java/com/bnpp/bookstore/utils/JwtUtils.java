@@ -20,7 +20,7 @@ public class JwtUtils {
   @Value("${app.jwtSecret}")
   private String jwtSecret;
 
-  @Value("${app.jwtExpirationMs}00000") // will have to change when refresh token comes in
+  @Value("${app.jwtExpirationMs}") // will have to change when refresh token comes in
   private int jwtExpirationMs;
 
   public String generateJwtToken(Authentication authentication) {

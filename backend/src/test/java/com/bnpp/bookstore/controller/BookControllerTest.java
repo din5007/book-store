@@ -43,13 +43,13 @@ class BookControllerTest extends MockMvcSetup {
   @Test
   void findAllBooks_withoutPageInfo_shouldReturn200Success() throws Exception {
     mvc
-            .perform(
-                    MockMvcRequestBuilders
-                            .get("/api/books")
-                            .contentType("application/json")
-                            .queryParam("title", "potter")
-            )
-            .andDo(MockMvcResultHandlers.print())
-            .andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
+      .perform(
+        MockMvcRequestBuilders
+          .get("/api/books")
+          .contentType("application/json")
+          .queryParam("title", "potter")
+      )
+      .andDo(MockMvcResultHandlers.print())
+      .andExpect(MockMvcResultMatchers.status().is2xxSuccessful());
   }
 }

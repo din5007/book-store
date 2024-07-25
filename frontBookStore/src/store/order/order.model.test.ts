@@ -9,6 +9,7 @@ describe('Test Order model', () => {
                 post: vi.fn()
             }
         }
+        localStorage.setItem("jwt", "randomkey");
         const store = createStore<AppStoreModel, any>(appStoreModel, {
             injections: mock,
         });
@@ -16,7 +17,7 @@ describe('Test Order model', () => {
         await store.getActions().order.createOrder({});
         expect(mock.httpService.post).toBeCalledWith("/api/order/create", {}, {
             "headers": {
-                "Authorization" : null
+                "Authorization" : "randomkey"
             }
         });
     });

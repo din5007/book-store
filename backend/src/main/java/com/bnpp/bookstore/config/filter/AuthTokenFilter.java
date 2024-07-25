@@ -1,7 +1,6 @@
 package com.bnpp.bookstore.config.filter;
 
 import com.bnpp.bookstore.DTO.UserDto;
-import com.bnpp.bookstore.entities.User;
 import com.bnpp.bookstore.service.UserService;
 import com.bnpp.bookstore.utils.JwtUtils;
 import jakarta.servlet.FilterChain;
