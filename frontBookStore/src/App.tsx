@@ -12,12 +12,12 @@ import OrderSummary from "./pages/OrderPage";
 import Loading from "./pages/CommonPages/LoadingPage";
 import { BrowserRouter } from "react-router-dom";
 import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
     return (
       <BrowserRouter>
-      <ToastContainer />
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick theme="colored"/>
       <GlobalStoreProvider>
         <Navigation >
             <Suspense fallback={<Loading />}>

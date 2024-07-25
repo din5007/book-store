@@ -1,6 +1,7 @@
 import { action, Action, thunk, Thunk } from "easy-peasy";
 import { UserDto } from "../../dto/dtos";
 import { AppStoreModel } from "..";
+import { toast } from "react-toastify";
 
 export interface UserModel {
     user: UserDto | null;
@@ -28,19 +29,18 @@ export const userModel : UserModel = {
             actions.setUserInfo(rsponse?.userInfo);
             actions.setIsUserLoggedIn(true);
         } catch (error) {;
-            console.info('error occured', error);
+            toast('Error Occured. Please reach out to support');;
             actions.setUserInfo(null);
             actions.setIsUserLoggedIn(false);
         }
     }),
-    signUp: thunk(async (actions, { email, password, name : userName }, { injections }) => {
+    signUp: thunk(async (_actions, { email, password, name : userName }, { injections }) => {
         const { httpService } = injections;
         try {
             const response = await httpService.post('/api/users/signup', { email, password, userName}, {});
-            actions.setUserInfo(response?.userInfo);
+            if(response) toast('Successfully Signed In');
         } catch (error) {
-            console.info('error occured', error);
-            actions.setUserInfo(null);
+            toast('Error Occured. Please reach out to support');;
         }
     })
 };
