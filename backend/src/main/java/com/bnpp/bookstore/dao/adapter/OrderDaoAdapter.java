@@ -36,14 +36,14 @@ public class OrderDaoAdapter implements OrderDao {
   public boolean createOrder(UserDto userDto, CartDtoList cart) {
     Order order = new Order();
     order.setUser(userRepository.findByEmail(userDto.getEmail()));
-    order.setTotalQuantity(calculateTotalQuanity(cart));
+    order.setTotalQuantity(calculateTotalQuantity(cart));
     order.setTotalPrice(calculateTotalPrice(cart));
     order.setOrderBookList(orderMapper.toOrderBook(cart.getCartDtoList()));
-    orderRepository.saveAndFlush(order);
+    orderRepository.save(order);
     return true;
   }
 
-  private static double calculateTotalQuanity(CartDtoList cart) {
+  private static double calculateTotalQuantity(CartDtoList cart) {
     return cart.getCartDtoList().stream().mapToDouble(CartDto::getQuantity).sum();
   }
 
