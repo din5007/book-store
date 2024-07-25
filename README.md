@@ -16,7 +16,7 @@ Click on the below links to download.
 
 ## DB Schema design
 
-[!screenshot][./db-schema.png]
+![screenshot](https://github.com/din5007/book-store/blob/main/db-schema.png?raw=true)
 
 To set up in local
 
@@ -29,7 +29,7 @@ Please make sure Maven and Node installed locally.
 ```shell
     cd ../frontBookStore
     npm install
-    npm start
+    npm run dev
 ```
 
 ## To Set up Back end
