@@ -7,7 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Table(name = "books")
+@Table(name = "books", indexes = {
+        @Index(name = "idx_book_title", columnList = "title")
+})
 @Getter
 @Setter
 @AllArgsConstructor

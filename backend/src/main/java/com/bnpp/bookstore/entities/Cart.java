@@ -4,10 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(
-  name = "cart"
-  //  uniqueConstraints = { @UniqueConstraint(columnNames = { "userName", "book_id" }) }
-)
+@Table(name = "cart", indexes = {
+        @Index(name = "idx_cart_user_name_unq", columnList = "user_name, book_id", unique = true)
+})
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
