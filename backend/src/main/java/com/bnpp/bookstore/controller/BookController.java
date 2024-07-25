@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:3000") // need to be removed when we place under same domain not for prod
 public class BookController {
   @Autowired
   BookService bookService;
