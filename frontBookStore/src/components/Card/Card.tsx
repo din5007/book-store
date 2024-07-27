@@ -9,10 +9,11 @@ function BookCard() {
   const { fetchAllBooks } = useStoreActions((actions) => actions.books);
   const { addToCart } = useStoreActions((actions) => actions.cart);
   
-  useEffect(() => {fetchAllBooks({});}, []);
+  useEffect(() => {
+    fetchAllBooks({});
+  }, []);
 
   return (
-    <>
       <Row className="m-auto">
         {books?.map(({ id, title, author, price}) => (
           <Col key={id} className="m-auto py-3">
@@ -27,7 +28,6 @@ function BookCard() {
           </Col>
         ))}
       </Row>
-    </>
   );
 }
 
