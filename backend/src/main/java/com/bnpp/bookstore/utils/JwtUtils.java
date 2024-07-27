@@ -20,8 +20,8 @@ public class JwtUtils {
   @Value("${app.jwtSecret}")
   private String jwtSecret;
 
-  @Value("${app.jwtExpirationMs}") // will have to change when refresh token comes in
-  private int jwtExpirationMs;
+  @Value("${app.jwtExpirationMs}000") // will have to change when refresh token comes in
+  private Long jwtExpirationMs;
 
   public String generateJwtToken(Authentication authentication) {
     UserDto userPrincipal = (UserDto) authentication.getPrincipal();

@@ -37,7 +37,7 @@ const Navigation : FC<{ children : ReactNode }> = ({ children }) => {
               )}
             </Nav>
           </Navbar.Collapse>
-          {( isUserLoggedIn || localStorage.getItem("jwt")) && 
+          {( localStorage.getItem("jwt")) && 
           <Button variant="link" onClick={() => {
             localStorage.clear();
             navigate('/home');

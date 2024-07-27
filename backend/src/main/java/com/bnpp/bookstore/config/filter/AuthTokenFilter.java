@@ -42,6 +42,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
           userDto = cacheToken.get(jwt);
         } else {
           userDto = userService.loadUserByUsername(username);
+          cacheToken.put(jwt, userDto);
         }
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
           userDto,
