@@ -35,4 +35,9 @@ public class CartServiceAdapter implements CartService {
   public boolean removeFromCart(Long bookId, UserDto userDto) {
     return cartDao.removeFromUserCart(bookId, userDto);
   }
+
+  @Override
+  public int getUserCartCount(UserDto userDto) {
+    return cartDao.getUserCartCount(userDto.getEmail());
+  }
 }

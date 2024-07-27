@@ -6,6 +6,7 @@ import com.bnpp.bookstore.service.CartService;
 import com.bnpp.bookstore.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -29,12 +30,21 @@ public class CartController {
   }
 
   @DeleteMapping("/cart/{book_id}/remove")
-  private void removeFromCart(@PathVariable(name = "book_id") Long bookId) {
-    cartService.removeFromCart(bookId, userService.getCurrentUser());
+  private ResponseEntity<Boolean> removeFromCart(
+    @PathVariable(name = "book_id") Long bookId
+  ) {
+    return ResponseEntity.ok(
+      cartService.removeFromCart(bookId, userService.getCurrentUser())
+    );
   }
 
   @GetMapping("/cart")
   private CartDtoList getUserCart() {
     return cartService.getUserCart(userService.getCurrentUser());
+  }
+
+  @GetMapping("/cart/count")
+  private int getUserCartCount() {
+    return cartService.getUserCartCount(userService.getCurrentUser());
   }
 }

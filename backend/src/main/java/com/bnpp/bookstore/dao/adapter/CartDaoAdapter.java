@@ -86,7 +86,7 @@ public class CartDaoAdapter implements CartDao {
       userCart
         .stream()
         .filter(cart -> Objects.equals(cart.getBook().getId(), bookId))
-              .toList()
+        .toList()
     );
     return true;
   }
@@ -96,5 +96,10 @@ public class CartDaoAdapter implements CartDao {
     List<Cart> userCart = cartRepository.findByUserName(userDto.getUsername());
     cartRepository.deleteAllInBatch(userCart);
     return true;
+  }
+
+  @Override
+  public int getUserCartCount(String email) {
+    return cartRepository.countByEmail(email);
   }
 }

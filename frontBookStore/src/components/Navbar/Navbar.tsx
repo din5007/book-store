@@ -8,7 +8,7 @@ import { FC, ReactNode } from "react";
 
 const Navigation : FC<{ children : ReactNode }> = ({ children }) => {
   const { isUserLoggedIn } = useStoreState((state) => state.user);
-  const { cart } = useStoreState((state) => state.cart);
+  const { cartCount } = useStoreState((state) => state.cart);
   const navigate = useNavigate();
 
   return (
@@ -30,7 +30,7 @@ const Navigation : FC<{ children : ReactNode }> = ({ children }) => {
                   <Nav.Link as={Link} to="/cart">
                     Cart{'    '}
                     <Badge pill bg="secondary">
-                      {cart?.length}
+                      {cartCount}
                     </Badge>
                   </Nav.Link>
                 </>
