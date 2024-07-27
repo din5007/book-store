@@ -37,6 +37,7 @@ class CartDaoAdapterTest {
   void getUserCart() {
     var cart = cartDaoAdapter.getUserCart(getUserDto());
     assertEquals(3, cart.getCartDtoList().size());
+    assertEquals("dine@gmail.com", cart.getCartDtoList().get(0).getUser().getEmail());
   }
 
   private static UserDto getUserDto() {
@@ -55,7 +56,21 @@ class CartDaoAdapterTest {
   @Sql(scripts = { "classpath:/init-db/cart.sql" })
   void removeFromUserCart() {
     cartDaoAdapter.removeFromUserCartByUser(getUserDto());
-    var cart = cartDaoAdapter.getUserCart(getUserDto());
-    assertEquals(0, cart.getCartDtoList().size());
+    var cart = cartDaoAdapter.getUserCartCount(getUserDto().getEmail());
+    assertEquals(0, cart);
+  }
+
+  @Test
+  @Sql(scripts = { "classpath:/init-db/cart.sql" })
+  void getUserCartCount() {
+    var count = cartDaoAdapter.getUserCartCount(getUserDto().getEmail());
+    assertEquals(3, count);
+  }
+
+  @Test
+  @Sql(scripts = { "classpath:/init-db/cart.sql" })
+  void getUserCartCount_forUnknownUser_shouldReturnZero() {
+    var count = cartDaoAdapter.getUserCartCount("randomUser");
+    assertEquals(0, count);
   }
 }
