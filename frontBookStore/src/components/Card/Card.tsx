@@ -7,9 +7,9 @@ import { useStoreActions, useStoreState } from "../../store/hooks";
 function BookCard() {
   const { books } = useStoreState((state) => state.books);
   const { fetchAllBooks } = useStoreActions((actions) => actions.books);
-  const { addToCart, fetchUserCart } = useStoreActions((actions) => actions.cart);
+  const { addToCart } = useStoreActions((actions) => actions.cart);
   
-  useEffect(() => {fetchAllBooks({}); fetchUserCart({});}, []);
+  useEffect(() => {fetchAllBooks({});}, []);
 
   return (
     <>

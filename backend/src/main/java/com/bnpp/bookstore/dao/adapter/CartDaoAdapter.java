@@ -86,7 +86,7 @@ public class CartDaoAdapter implements CartDao {
       userCart
         .stream()
         .filter(cart -> Objects.equals(cart.getBook().getId(), bookId))
-        .collect(Collectors.toList())
+              .toList()
     );
     return true;
   }

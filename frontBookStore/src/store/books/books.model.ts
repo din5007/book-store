@@ -26,7 +26,7 @@ export const booksModel : BookModel = {
     setBooks: action((state, books) => {
         state.books = books;
     }),
-    fetchAllBooks: thunk(async (actions, { title = '', page = 0 }, { injections, getState }) => {
+    fetchAllBooks: thunk(async (actions, { title = '', page = 0 }, { injections, getState, getStoreActions }) => {
         const { httpService } = injections;
         if(!title) title = getState().searchKey;
         if(!page) page = getState().currentPage;
@@ -35,6 +35,7 @@ export const booksModel : BookModel = {
                 'Authorization' : localStorage.getItem('jwt')
             }});
             actions.setBooks(rsponse);
+            getStoreActions().cart.fetchUserCart({});
         } catch (error) {
             toast.error('Error Occured. Please reach out to support');
             actions.setBooks([]);
