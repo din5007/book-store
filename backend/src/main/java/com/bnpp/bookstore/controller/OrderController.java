@@ -1,5 +1,6 @@
 package com.bnpp.bookstore.controller;
 
+import com.bnpp.bookstore.DTO.OrderDto;
 import com.bnpp.bookstore.entities.Order;
 import com.bnpp.bookstore.service.OrderService;
 import java.util.List;
@@ -21,6 +22,15 @@ public class OrderController {
       return ResponseEntity.ok(orderService.createOrder());
     } catch (Exception e) {
       return ResponseEntity.internalServerError().body(false);
+    }
+  }
+
+  @GetMapping("/orders")
+  private ResponseEntity<List<OrderDto>> getOrders() {
+    try {
+      return ResponseEntity.ok(orderService.getOrders());
+    } catch (Exception e) {
+      return ResponseEntity.internalServerError().body(null);
     }
   }
 }

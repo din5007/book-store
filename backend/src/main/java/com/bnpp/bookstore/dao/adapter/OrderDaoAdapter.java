@@ -2,6 +2,7 @@ package com.bnpp.bookstore.dao.adapter;
 
 import com.bnpp.bookstore.DTO.CartDto;
 import com.bnpp.bookstore.DTO.CartDtoList;
+import com.bnpp.bookstore.DTO.OrderDto;
 import com.bnpp.bookstore.DTO.UserDto;
 import com.bnpp.bookstore.dao.OrderDao;
 import com.bnpp.bookstore.entities.Order;
@@ -11,6 +12,7 @@ import com.bnpp.bookstore.mapper.OrderMapper;
 import com.bnpp.bookstore.mapper.UserMapper;
 import com.bnpp.bookstore.repository.OrderRepository;
 import com.bnpp.bookstore.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,6 +43,12 @@ public class OrderDaoAdapter implements OrderDao {
     order.setOrderBookList(orderMapper.toOrderBook(cart.getCartDtoList()));
     orderRepository.save(order);
     return true;
+  }
+
+  @Override
+  @Transactional
+  public List<OrderDto> getOrder(String userName) {
+    return orderMapper.toDtoList(orderRepository.findByUserName(userName));
   }
 
   private static double calculateTotalQuantity(CartDtoList cart) {
