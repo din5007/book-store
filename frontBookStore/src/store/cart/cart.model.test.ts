@@ -82,4 +82,25 @@ describe('Test cart model', () => {
             }
         });
     });
+
+    it('count the user cart service ', async () => {
+        const mock = {
+            httpService: {
+                get: vi.fn(() => 2)
+            }
+        }
+        localStorage.setItem('jwt', 'randomkey');
+        const store = createStore<AppStoreModel, any>(appStoreModel, {
+            injections: mock,
+            initialState: {}
+        });
+
+        await store.getActions().cart.countUserCart({});
+        expect(mock.httpService.get).toBeCalledWith("/api/cart/count", {},  {
+            "headers": {
+                "Authorization" : "randomkey"
+            }
+        });
+        expect(store.getState().cart.cartCount).toEqual(2);
+    });
 });

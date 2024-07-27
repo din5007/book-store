@@ -35,7 +35,7 @@ export const booksModel : BookModel = {
                 'Authorization' : localStorage.getItem('jwt')
             }});
             actions.setBooks(rsponse);
-            getStoreActions().cart.fetchUserCart({});
+            getStoreActions().cart.countUserCart({});
         } catch (error) {
             toast.error('Error Occured. Please reach out to support');
             actions.setBooks([]);

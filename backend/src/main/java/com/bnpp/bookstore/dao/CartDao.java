@@ -14,4 +14,6 @@ public interface CartDao {
   boolean removeFromUserCart(Long bookId, UserDto userDto);
 
   boolean removeFromUserCartByUser(UserDto userDto);
+
+  int getUserCartCount(String email);
 }
