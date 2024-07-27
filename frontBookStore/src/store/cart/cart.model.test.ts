@@ -103,4 +103,26 @@ describe('Test cart model', () => {
         });
         expect(store.getState().cart.cartCount).toEqual(2);
     });
+
+    it('"count" is 0 when there are no items', async () => {
+        // act
+        const store = createStore(appStoreModel);
+
+        await store.getActions().cart.setCartInfo([
+            {
+                book: {
+                    price: 400
+                },
+                quantity: 4
+            },
+            {
+                book: {
+                    price: 200
+                },
+                quantity: 8
+            }
+        ]);  
+        // assert
+        expect(store.getState().cart.totalPrice).toEqual(3200);
+      });
 });
