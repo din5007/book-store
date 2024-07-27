@@ -1,6 +1,7 @@
 package com.bnpp.bookstore.service.adapter;
 
 import com.bnpp.bookstore.DTO.CartDto;
+import com.bnpp.bookstore.DTO.OrderDto;
 import com.bnpp.bookstore.DTO.UserDto;
 import com.bnpp.bookstore.dao.CartDao;
 import com.bnpp.bookstore.dao.OrderDao;
@@ -55,5 +56,11 @@ public class OrderServiceAdapter implements OrderService {
       return cartDao.removeFromUserCartByUser(userDto);
     }
     return false;
+  }
+
+  @Override
+  public List<OrderDto> getOrders() {
+    var userDto = userServiceAdapter.getCurrentUser();
+    return orderDao.getOrder(userDto.getUsername());
   }
 }
