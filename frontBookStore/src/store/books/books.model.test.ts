@@ -6,7 +6,13 @@ describe('Test book model', () => {
     it('find all books ', async () => {
         const mock = {
             httpService: {
-                get: vi.fn()
+                get: vi.fn(() => [{
+                    id: 1,
+                    title: 'harry',
+                    author: 'rowling',
+                    price: 500,
+                    quantity: 400
+                }])
             }
         }
         localStorage.setItem('jwt', 'randomkey');
@@ -21,5 +27,6 @@ describe('Test book model', () => {
                 "Authorization" : "randomkey"
             }
         });
+        expect(store.getState().books.books.length).toEqual(1)
     });
 });
